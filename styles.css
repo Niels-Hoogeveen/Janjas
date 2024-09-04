@@ -1,5 +1,6 @@
 /*font family from google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
 
 html {
   font-size: 62.5%; /*62.5% = 10px; to make it easier to calculate REM units.*/
@@ -16,6 +17,10 @@ body {
   height: 100vh;
 }
 #clock {max-width: 600px;}
+
+#handgeschrevenfont {
+    font-family: "Playwrite CU", cursive;
+}
 
 /* for smaller screens below 700px */
 @media only screen and (max-width: 700px) {
