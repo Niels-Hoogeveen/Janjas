@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
       // Functie om de teller bij te werken en weer te geven
       function updateCount() {
-          document.getElementById("kisses").innerHTML = "Aantal kusjes sinds trouwdag: <br>" + totalKisses;
+          document.getElementById("kisses").innerHTML = "Aantal kusjes sinds <br> trouwdag: " + totalKisses;
       }
       
       // Update onmiddellijk
