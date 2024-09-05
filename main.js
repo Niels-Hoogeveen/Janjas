@@ -80,7 +80,6 @@ window.addEventListener("load", () => {
     differenceInWeeks + " weken getrouwd =<br>" +
     pizzaCount + " Turkse pizza's gegeten";
 }
- 
   });
   document.addEventListener("DOMContentLoaded", function() {
     function checkScreenWidth() {
@@ -96,4 +95,129 @@ window.addEventListener("load", () => {
 
     checkScreenWidth();
     window.addEventListener("resize", checkScreenWidth);
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const weddingDate = new Date(2003, 9, 5); // Datum van trouwen (5 september 2003)
+  const currentDate = new Date();
+  const cheeseCostPerPack = 3; // Kosten per kaaspak
+  const packsPerWeek = 5.5; // Gemiddeld aantal pakken kaas per week
+  const cheesePerPersonPerDay = 2; // Aantal plakken kaas per persoon per dag
+
+  // Functie om het aantal dagen tussen twee datums te berekenen
+  function getDaysBetweenDates(startDate, endDate) {
+      const oneDay = 24 * 60 * 60 * 1000; // Aantal milliseconden in een dag
+      return Math.floor((endDate - startDate) / oneDay);
+  }
+
+  // Functie om de kosten uit te rekenen
+  function calculateCheeseCost() {
+      const daysMarried = getDaysBetweenDates(weddingDate, currentDate);
+
+      // Ouders en kinderen:
+      const initialFamilySize = 2; // Ouders
+      const familyGrowth = [
+          { years: 5, size: initialFamilySize },
+          { years: 10, size: initialFamilySize + 1 }, // Broer
+          { years: 5, size: initialFamilySize + 2 }, // Broertje
+          { years: 1, size: initialFamilySize + 3 }, // Zus
+          { years: 1, size: initialFamilySize + 4 }  // Zus
+      ];
+
+      let totalCheeseCost = 0;
+      let daysRemaining = daysMarried;
+
+      for (const period of familyGrowth) {
+          const periodDays = period.years * 365;
+          const familySize = period.size;
+
+          if (daysRemaining <= periodDays) {
+              totalCheeseCost += daysRemaining * familySize * cheesePerPersonPerDay * cheeseCostPerPack / 30; // Aantal weken
+              break;
+          } else {
+              totalCheeseCost += periodDays * familySize * cheesePerPersonPerDay * cheeseCostPerPack / 30;
+              daysRemaining -= periodDays;
+          }
+      }
+
+      return totalCheeseCost.toFixed(2);
+  }
+
+  // Update de kosten op de pagina
+  function updateCheeseCost() {
+      document.getElementById("cheese-cost").innerHTML = `Geschatte uitgaven aan kaas: <br>  €${calculateCheeseCost()}`;
+  }
+
+  updateCheeseCost();
+  // Werk elke dag bij
+  setInterval(updateCheeseCost, 24 * 60 * 60 * 1000); // Elke 24 uur
+});
+document.addEventListener("DOMContentLoaded", function() {
+  function kisses() {
+      var weddingDate = new Date(2003, 9, 5); // Datum van trouwen (5 oktober 2003)
+      var today = new Date();
+      
+      // Bereken het verschil in milliseconden
+      var differenceInMilliseconds = today - weddingDate;
+      
+      // Zet het verschil om naar dagen
+      var differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+      
+      // Bereken het aantal kussen (5 kussen per dag)
+      var kissesPerDay = 5;
+      var totalKisses = differenceInDays * kissesPerDay;
+      
+      // Functie om de teller bij te werken en weer te geven
+      function updateCount() {
+          document.getElementById("kisses").innerHTML = "Aantal kusjes sinds trouwdag: <br>" + totalKisses;
+      }
+      
+      // Update onmiddellijk
+      updateCount();
+      // Update elke dag (24 uur * 60 minuten * 60 seconden * 1000 milliseconden)
+      setInterval(function() {
+          // Herbereken kussen per dag
+          today = new Date();
+          differenceInMilliseconds = today - weddingDate;
+          differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+          totalKisses = differenceInDays * kissesPerDay;
+          updateCount();
+      }, 24 * 60 * 60 * 1000); // Elke 24 uur
+  }
+
+  kisses();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  function calculateMovieTime(startDate, endDate) {
+      // Parse the start and end dates
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+
+      // Calculate the difference in milliseconds
+      const diff = end - start;
+
+      // Convert milliseconds to weeks (1 week = 7 days * 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+      const weeks = diff / (7 * 24 * 60 * 60 * 1000);
+
+      // Calculate total movie time in hours (2 hours per week)
+      const totalHours = weeks * 2;
+
+      return totalHours;
+  }
+
+  // Function to update the movie time display in the HTML element with ID 'movies'
+  function updateMovieTime() {
+      const weddingDate = '2003-09-05'; // Correct wedding date
+      const currentDate = new Date().toISOString().split('T')[0]; // Current date
+
+      const totalMovieTime = calculateMovieTime(weddingDate, currentDate);
+
+      // Get the result element and set its content
+      document.getElementById('movies').innerHTML = `Totaal aantal uren samen <br> filmpjes zoals keuringsdienst,<br> b&b, ik vertrek <br> gekeken: ${totalMovieTime.toFixed(2)} uur`;
+  }
+
+  // Update immediately
+  updateMovieTime();
+  // Update daily (24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+  setInterval(updateMovieTime, 24 * 60 * 60 * 1000); // Every 24 hours
 });
