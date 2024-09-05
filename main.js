@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Update de kosten op de pagina
   function updateCheeseCost() {
-      document.getElementById("cheese-cost").innerHTML = `Geschatte uitgaven aan kaas: <br>  €${calculateCheeseCost()}`;
+      document.getElementById("cheese-cost").innerHTML = `Geschatte uitgaven aan<br> kaas:   €${calculateCheeseCost()}`;
   }
 
   updateCheeseCost();
