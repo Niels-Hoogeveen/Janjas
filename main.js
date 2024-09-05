@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const totalMovieTime = calculateMovieTime(weddingDate, currentDate);
 
       // Get the result element and set its content
-      document.getElementById('movies').innerHTML = `Totaal aantal uren samen <br> filmpjes zoals keuringsdienst,<br> b&b, ik vertrek <br> gekeken: ${totalMovieTime.toFixed(2)} uur`;
+      document.getElementById('movies').innerHTML = `Totaal aantal uren samen <br> filmpjes zoals<br> keuringsdienst <br> gekeken: ${totalMovieTime.toFixed(2)} uur`;
   }
 
   // Update immediately
