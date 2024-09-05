@@ -82,4 +82,18 @@ window.addEventListener("load", () => {
 }
  
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    function checkScreenWidth() {
+        var width = window.innerWidth;
 
+        if (width > 1000) {
+            var userConfirmed = confirm("Deze site is alleen voor mobiel ontworpen.");
+            if (userConfirmed) {
+                window.location.href = "https://giphy.com/embed/Ty9Sg8oHghPWg";
+            }
+        }
+    }
+
+    checkScreenWidth();
+    window.addEventListener("resize", checkScreenWidth);
+});
