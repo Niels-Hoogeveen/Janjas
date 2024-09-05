@@ -1,26 +1,25 @@
 /*font family from google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
 
 html {
   font-size: 62.5%; /*62.5% = 10px; to make it easier to calculate REM units.*/
 }
 body {
-  text-align: center;
   font-family: "Oswald", sans-serif;
   font-weight: 300;
   font-size: 2.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #faedcd;
   height: 100vh;
+  background-image: url('images/background.png');
+  background-size: cover; /* Pas dit aan naar je behoefte */
+  background-position: center; /* Optioneel: centreert de afbeelding */
+  background-repeat: no-repeat; /* Voorkomt herhaling van de afbeelding */
+  justify-content: baseline;
+  align-items: baseline;
 }
-#clock {max-width: 600px;}
 
-#handgeschrevenfont {
-    font-family: "Playwrite CU", cursive;
-}
+#clock {max-width: 600px;}
 
 /* for smaller screens below 700px */
 @media only screen and (max-width: 700px) {
@@ -30,4 +29,102 @@ body {
 /*for smaller screens below 300px*/
 @media only screen and (max-width: 300px) {
   body {font-size: 1.6rem;}
+}
+
+/* Zorg dat het hartje en de tekst naast elkaar komen */
+#clock i.fa {
+  display: inline-flex;
+  vertical-align: middle; /* Dit zorgt ervoor dat het icoon verticaal gecentreerd is met de tekst */
+}
+
+#clock {
+  padding: 6px;
+  color: bisque;
+}
+
+#clock h3 {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+  font-family: "Handjet", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+#header {
+  text-align: center;
+  justify-content: center;
+  align-items:center;
+}
+
+#daily-stats-div {
+  margin-left: 16px;
+}
+
+h1 {
+  font-family: "Handjet", sans-serif;
+  font-size: 45px;
+
+}
+
+h2 {
+  font-family: "Handjet", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+p {
+  font-family: "Handjet", sans-serif;
+  font-weight: 500
+}
+/* Zorg dat de afbeelding en tekst inline staan */
+#clock img {
+  display: inline-block;
+  vertical-align: middle; /* Zorg ervoor dat de afbeelding gecentreerd is ten opzichte van de tekst */
+  margin-right: 10px;
+  margin-left: 3px;
+  width: 30px;
+  height: 30px;
+}
+
+#clock h2 {
+  display: inline-block;
+  vertical-align: middle; /* Zorg ervoor dat de tekst gecentreerd is ten opzichte van de afbeelding */
+  margin: 0; /* Verwijder eventuele marges die de uitlijning zouden verstoren */
+}
+
+.dotted-line {
+  border: none;
+  border-top: 2px dotted black;
+  margin: 20px 0; /* Optioneel: voeg marge toe boven en onder de lijn */
+}
+
+h1, h2, h3 {
+  overflow: hidden; /* Zorgt ervoor dat de inhoud niet zichtbaar is tot de animatie */
+  border-right: .30em solid orange; /* De typemachine cursor */
+  white-space: nowrap; /* Houdt de inhoud op één regel */
+  margin: 0 auto; /* Geeft dat scrollende effect als het typen gebeurt */
+  letter-spacing: .15em; /* Pas dit aan indien nodig */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .7s step-end infinite,
+    hide-caret 2s steps(40, end) 3s forwards; /* Voegt de hide-caret animatie toe */
+}
+
+/* De typemachine-effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Het typewriter cursor-effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+/* De animatie om de cursor te verbergen na 3 seconden */
+@keyframes hide-caret {
+  0% { border-right: .30em solid orange; }
+  100% { border-right: none; }
 }
